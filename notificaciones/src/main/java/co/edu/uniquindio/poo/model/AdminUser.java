@@ -9,5 +9,5 @@ public class AdminUser extends User {
     protected String getHeader() { return "[ADMINISTRADOR]"; }
     protected String personalizeMessage(String message) { return "Administrador: " + message; }
     protected String getFooter() { return "-- Sistema --"; }
-
+//y77777yyyy
 }
