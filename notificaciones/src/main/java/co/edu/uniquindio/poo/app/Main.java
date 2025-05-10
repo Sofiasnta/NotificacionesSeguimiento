@@ -2,31 +2,30 @@ package co.edu.uniquindio.poo.app;
 
 import co.edu.uniquindio.poo.model.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
 
         // Crear usuario
-        User user = new ClientUser("cliente@mail.com", false);
+        Usuario usuario1 = new Cliente("cliente1@gmail.com", false);
 
         // Crear notificación
-        Notification notification = new Notification(user, "Tu perfil ha sido actualizado.");
+        Notificacion notificacion1 = new Notificacion(usuario1, "Perfil actualizado.");
 
         // Establecer estrategia
-        notification.setStrategy(new EmailNotification());
+        notificacion1.setStrategy(new NotificacionEmail());
 
         // Crear cadena de filtros (Chain of Responsibility)
-        NotificationFilter filter = new EmptyMessageFilter();
-        filter.setNext(new BlockedUserFilter());
+        Filtro filtro1 = new MensajeVacio();
+        filtro1.setNext(new UsuarioBloqueado());
 
         // Validar notificación
-        if (filter.handle(notification)) {
+        if (filtro1.handle(notificacion1)) {
             // Crear y ejecutar comando (Command)
-            NotificationCommand command = new SendNotificationCommand(notification);
-            NotificationInvoker invoker = new NotificationInvoker();
-            invoker.addCommand(command);
-            invoker.executeCommands();
+            Command command1 = new EnviarNotificacion(notificacion1);
+            EjecutorDeComando ejecutor = new EjecutorDeComando();
+            ejecutor.addCommand(command1);
+            ejecutor.executeCommands();
         }
     }
 }

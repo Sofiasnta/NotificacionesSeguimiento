@@ -1,11 +1,11 @@
 package co.edu.uniquindio.poo.model;
 
-public abstract class User {
+public abstract class Usuario {
 
     protected String email;
     protected boolean blocked;
 
-    public User(String email, boolean blocked) {
+    public Usuario(String email, boolean blocked) {
         this.email = email;
         this.blocked = blocked;
     }
@@ -13,9 +13,9 @@ public abstract class User {
     public String getEmail() { return email; }
     public boolean isBlocked() { return blocked; }
 
-    // Método plantilla
-    public final String formatMessage(String rawMessage) {
-        return getHeader() + "\n" + personalizeMessage(rawMessage) + "\n" + getFooter();
+
+    public final String formatMessage(String Message) {
+        return getHeader() + "\n" + personalizeMessage(Message) + "\n" + getFooter();
     }
 
     protected abstract String getHeader();

@@ -1,8 +1,8 @@
 package co.edu.uniquindio.poo.model;
 
-public class ClientUser extends User {
+public class Cliente extends Usuario {
 
-    public ClientUser(String email, boolean blocked) {
+    public Cliente(String email, boolean blocked) {
         super(email, blocked);
     }
 
